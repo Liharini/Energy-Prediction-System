@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="d-flex justify-content-between align-items-center">
+            <h2>Energy Analysis Results for {{ month }}</h2>
+            <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Back to Dashboard</a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Visualization</h4>
+            </div>
+            <div class="card-body text-center">
+                <img src="{{ url_for('static', filename='results/' + result_file) }}" alt="Energy Analysis Results" class="img-fluid">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-5">
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Energy Forecast</h4>
+            </div>
+            <div class="card-body">
+                <h5>Predicted Energy Consumption for Next Month</h5>
+                <p class="display-4 text-center">{{ forecast_value|round(2) }} kWh</p>
+            </div>
+        </div>
+
+        {% if prediction_accuracy %}
+        <div class="card mb-4">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">Model Accuracy</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Actual energy:</strong> {{ prediction_accuracy.actual|round(2) }} kWh</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Predicted energy:</strong> {{ prediction_accuracy.predicted|round(2) }} kWh</p>
+                    </div>
+                </div>
+                <div class="progress" style="height: 25px;">
+                    <div class="progress-bar bg-success" role="progressbar" 
+                         style="width: {{ prediction_accuracy.accuracy }}%;" 
+                         aria-valuenow="{{ prediction_accuracy.accuracy }}" 
+                         aria-valuemin="0" aria-valuemax="100">
+                        {{ prediction_accuracy.accuracy|round(1) }}%
+                    </div>
+                </div>
+                <p class="text-center mt-2"><small>Model accuracy based on hindcast comparison</small></p>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Anomaly Detection</h4>
+            </div>
+            <div class="card-body">
+                <h5>{{ anomaly_count }} Anomalies Detected</h5>
+                {% if anomalies_dates %}
+                <div class="anomaly-list" style="max-height: 200px; overflow-y: auto;">
+                    <ul class="list-group">
+                        {% for date in anomalies_dates %}
+                        <li class="list-group-item">{{ date }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% else %}
+                <p>No anomalies detected in your energy data.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">Energy Saving Suggestions</h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    {% for tip in tips %}
+                    <li class="list-group-item">{{ tip }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

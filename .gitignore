@@ -1,0 +1,42 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment
+venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment variables
+.env
+
+# Python egg
+*.egg
+*.egg-info/
+dist/
+build/
+
+# HDF5 model weights
+*.h5
+
+# PNG/plot outputs
+*.png
+
+# CSV files (optional - only if you don’t want to track them)
+# *.csv
+
+# VS Code settings
+.vscode/
+
+# Flask cache
+instance/
+.webassets-cache

@@ -1,0 +1,107 @@
+/* Custom styles for Energy Prediction System */
+
+body {
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-header {
+    font-weight: 600;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0a58ca;
+    border-color: #0a58ca;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #bb2d3b;
+    border-color: #bb2d3b;
+}
+
+.btn-info {
+    background-color: #0dcaf0;
+    border-color: #0dcaf0;
+    color: #fff;
+}
+
+.btn-info:hover {
+    background-color: #31d2f2;
+    border-color: #31d2f2;
+    color: #fff;
+}
+
+/* Button group spacing */
+.btn-group .btn {
+    margin-right: 2px;
+}
+
+.btn-group form {
+    display: inline-block;
+}
+
+.display-4 {
+    font-weight: 600;
+    color: #0d6efd;
+}
+
+.anomaly-list {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+}
+
+footer {
+    margin-top: 50px;
+    border-top: 1px solid #dee2e6;
+}
+
+.form-text {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+/* Style for delete all button container */
+.mt-3 {
+    margin-top: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .col-md-6 {
+        margin-bottom: 20px;
+    }
+    
+    .btn-group {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .btn-group .btn,
+    .btn-group form {
+        margin-bottom: 5px;
+        width: 100%;
+    }
+}
